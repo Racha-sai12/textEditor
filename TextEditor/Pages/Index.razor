@@ -1,0 +1,218 @@
+﻿@page "/"
+@using TextEditor.Models
+@using TextEditor.Services
+@inject EditorService editorService
+<div class="row full-height-class">
+    <div class="scroller col-2">
+        <div id="accordion" class="p-0">
+            <div class="card">
+                <div class="card-body cursor-pointer" @onclick=@(()=>ShowProjectModal())> + Add Project</div>
+            </div>
+            @if (Projects.Any())
+            {
+                @foreach (Project project in Projects)
+                {
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center" id="headingOne">
+                                <div data-toggle="collapse" data-target="@("#" + project.Id.ToString())" aria-expanded="true" aria-controls="collapseOne">
+                                    @project.Name
+                                </div>
+                            <Icon @onclick="@(()=>DeleteProject(project.Id))" Name=@("fa-solid fa-trash") IconStyle="IconStyle.Regular" />
+                        </div>
+                        <div id="@(project.Id.ToString())" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            @if (project.Chapters.Any())
+                            {
+                                @foreach (Chapter chapter in project.Chapters)
+                                {
+                                    <div class="d-flex justify-content-between align-items-center card-body cursor-pointer">
+                                        <div @onclick="@(()=>LoadChapter(chapter))">@chapter.Title</div>
+                                        <Icon @onclick="@(()=>DeleteChapter(chapter.Id))" Name=@("fa-solid fa-trash") IconStyle="IconStyle.Regular" />
+                                    </div>
+                                }
+                            }
+                            <div @onclick="@(()=>ShowChapterModal(project.Id))" class="card-body cursor-pointer">
+                                + Add chapter
+                            </div>
+                        </div>
+                       
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No project ot be found</p>
+            }
+            
+           
+          
+        </div>
+    </div>
+    
+    <div class="scroller col-10">
+
+        @if (SelectedChapter == null)
+        {
+            <p>select a chapter</p>
+        }
+        else
+        {
+            <TextEditorComponent @ref=TextEditorComponentRef Chapter ="SelectedChapter"></TextEditorComponent>
+        }
+    </div>
+
+    <Modal @ref="createProjectModalRef">
+        <ModalContent Centered>
+            <ModalHeader>
+                <ModalTitle>Create Project</ModalTitle>
+                <CloseButton />
+            </ModalHeader>
+            <ModalBody>
+                <Field>
+                    <FieldLabel>Name</FieldLabel>
+                    <TextEdit @bind-text=Name Placeholder="Enter name..." />
+                </Field>
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Secondary" Clicked="@CloseProjectModal">Close</Button>
+                <Button Color="Color.Primary" Clicked="@HideProjectModal">Save Changes</Button>
+            </ModalFooter>
+        </ModalContent>
+    </Modal>
+
+
+    <Modal @ref="createChapterModalRef">
+        <ModalContent Centered>
+            <ModalHeader>
+                <ModalTitle>New Chapter</ModalTitle>
+                <CloseButton />
+            </ModalHeader>
+            <ModalBody>
+                <Field>
+                    <FieldLabel>Name</FieldLabel>
+                    <TextEdit @bind-text=Name Placeholder="Enter name..." />
+                </Field>
+
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Secondary" Clicked="@CloseChapterModal">Close</Button>
+                <Button Color="Color.Primary" Clicked="@HideChapterModal">Save Changes</Button>
+            </ModalFooter>
+        </ModalContent>
+    </Modal>
+</div>
+<style>
+    .full-height-class
+    {
+        height: 100vh;
+    }
+    .scroller{
+        overflow: scroll;
+        height: 100%;
+    }
+</style>
+@code{
+    private List<Project> Projects { get; set; } = new List<Project>();
+    private Modal createProjectModalRef;
+    private Modal createChapterModalRef;
+    private string Name = "";
+    private int SelectedProjectId = 0;
+    private Chapter SelectedChapter;
+    private TextEditorComponent TextEditorComponentRef;
+
+    private async Task DeleteProject(int projectId)
+    {
+        await editorService.DeleteProject(projectId);
+        await LoadProjects();
+    }
+
+    private async Task DeleteChapter(int chapterId)
+    {
+        await editorService.DeleteChapter(chapterId);
+        await LoadProjects();
+    }
+    private async Task LoadChapter(Chapter chapter)
+    {
+        SelectedChapter = chapter;
+        if (TextEditorComponentRef != null)
+        {
+            TextEditorComponentRef.EnableEditor();
+        }
+    }
+
+    private async Task CloseProjectModal()
+    {
+        createProjectModalRef.Hide();
+        ResetNameValue();
+        if (TextEditorComponentRef != null)
+        {
+            TextEditorComponentRef.EnableEditor();
+        }
+
+    }
+    private async Task CloseChapterModal()
+    {
+        createChapterModalRef.Hide();
+        ResetNameValue();
+        if (TextEditorComponentRef != null)
+        {
+            TextEditorComponentRef.EnableEditor();
+        }
+    }
+    private async Task ShowChapterModal(int projectId)
+    {
+        createChapterModalRef.Show();
+        SelectedProjectId = projectId;
+        if (TextEditorComponentRef != null)
+        {
+            TextEditorComponentRef.DisableEditor();
+        }
+    }
+
+    private async Task HideChapterModal()
+    {
+        await editorService.AddChapter(Name, SelectedProjectId);
+        createChapterModalRef.Hide();
+        await LoadProjects();
+        ResetNameValue();
+        if (TextEditorComponentRef != null)
+        {
+            TextEditorComponentRef.EnableEditor();
+        }
+
+    }
+
+    private async Task ShowProjectModal()
+    {
+        createProjectModalRef.Show();
+        if (TextEditorComponentRef != null)
+        {
+            TextEditorComponentRef.DisableEditor();
+        }
+    }
+
+    private async Task HideProjectModal()
+    {
+        await editorService.CreateProject(Name);
+        createProjectModalRef.Hide();
+        await LoadProjects();
+        ResetNameValue();
+        if (TextEditorComponentRef != null)
+        {
+            TextEditorComponentRef.EnableEditor();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadProjects();
+    }
+
+    private async Task LoadProjects()
+    {
+        Projects = await editorService.GetProjects();
+    }
+    private void ResetNameValue()
+    {
+        Name = "";
+    }
+}

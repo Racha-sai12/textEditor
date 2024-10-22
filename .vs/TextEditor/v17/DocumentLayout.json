@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projects\\Personal\\TextEditor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|c:\\projects\\personal\\texteditor\\texteditor\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|solutionrelative:texteditor\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|c:\\projects\\personal\\texteditor\\texteditor\\pages\\texteditorcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|solutionrelative:texteditor\\pages\\texteditorcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|c:\\projects\\personal\\texteditor\\texteditor\\services\\editorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|solutionrelative:texteditor\\services\\editorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|c:\\projects\\personal\\texteditor\\texteditor\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|solutionrelative:texteditor\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|c:\\projects\\personal\\texteditor\\texteditor\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|solutionrelative:texteditor\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|c:\\projects\\personal\\texteditor\\texteditor\\models\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74B746BB-484A-4AAD-AE43-2C90D8339A46}|TextEditor\\TextEditor.csproj|solutionrelative:texteditor\\models\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "TextEditor\\wwwroot\\index.html",
+              "ToolTip": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\wwwroot\\index.html",
+              "RelativeToolTip": "TextEditor\\wwwroot\\index.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-10-22T13:51:57.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TextEditorComponent.razor",
+              "DocumentMoniker": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\Pages\\TextEditorComponent.razor",
+              "RelativeDocumentMoniker": "TextEditor\\Pages\\TextEditorComponent.razor",
+              "ToolTip": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\Pages\\TextEditorComponent.razor",
+              "RelativeToolTip": "TextEditor\\Pages\\TextEditorComponent.razor",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-19T15:18:37.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Context.cs",
+              "DocumentMoniker": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\Models\\Context.cs",
+              "RelativeDocumentMoniker": "TextEditor\\Models\\Context.cs",
+              "ToolTip": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\Models\\Context.cs",
+              "RelativeToolTip": "TextEditor\\Models\\Context.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T15:00:41.391Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EditorService.cs",
+              "DocumentMoniker": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\Services\\EditorService.cs",
+              "RelativeDocumentMoniker": "TextEditor\\Services\\EditorService.cs",
+              "ToolTip": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\Services\\EditorService.cs",
+              "RelativeToolTip": "TextEditor\\Services\\EditorService.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAewE4AAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T14:34:41.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\_Imports.razor",
+              "RelativeDocumentMoniker": "TextEditor\\_Imports.razor",
+              "ToolTip": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\_Imports.razor",
+              "RelativeToolTip": "TextEditor\\_Imports.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-19T14:28:27.412Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.razor",
+              "DocumentMoniker": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\Pages\\Index.razor",
+              "RelativeDocumentMoniker": "TextEditor\\Pages\\Index.razor",
+              "ToolTip": "C:\\Projects\\Personal\\TextEditor\\TextEditor\\Pages\\Index.razor",
+              "RelativeToolTip": "TextEditor\\Pages\\Index.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-19T14:26:12.832Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

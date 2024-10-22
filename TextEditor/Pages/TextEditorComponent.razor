@@ -1,0 +1,105 @@
+﻿@using Blazorise
+@using Blazorise.RichTextEdit
+@using TextEditor.Models
+@using TextEditor.Services
+@inject IJSRuntime JS
+@inject EditorService editorService
+
+    <RichTextEdit @ref=richTextEditRef
+                  Theme="RichTextEditTheme.Snow"
+                  ContentChanged="@(OnContentChanged)"
+                  PlaceHolder="Type your post here..."
+                  ReadOnly="@readOnly"
+                  SubmitOnEnter="false"
+                  ToolbarPosition="Placement.Top"
+                  Height="Height.Is100"
+              Width="Width.Is100">
+        <Toolbar>
+            <RichTextEditToolbarGroup>
+            <RichTextEditToolbarSelect Action="RichTextEditAction.Align">
+                <RichTextEditToolbarSelectItem Selected />
+                <RichTextEditToolbarSelectItem Value="right" />
+                <RichTextEditToolbarSelectItem Value="center" />
+                <RichTextEditToolbarSelectItem Value="justify" />
+            </RichTextEditToolbarSelect>
+                <RichTextEditToolbarButton Action="RichTextEditAction.Bold" />
+                
+                <RichTextEditToolbarButton Action="RichTextEditAction.Italic" />
+                <RichTextEditToolbarSelect Action="RichTextEditAction.Size">
+                    <RichTextEditToolbarSelectItem Value="small" />
+                    <RichTextEditToolbarSelectItem Selected />
+                    <RichTextEditToolbarSelectItem Value="large" />
+                    <RichTextEditToolbarSelectItem Value="huge">Very Big</RichTextEditToolbarSelectItem>
+                </RichTextEditToolbarSelect>
+                <RichTextEditToolbarButton Action="RichTextEditAction.List" Value="ordered" />
+                <RichTextEditToolbarButton Action="RichTextEditAction.List" Value="bullet" />
+            </RichTextEditToolbarGroup>
+            
+        </Toolbar>
+        <Editor></Editor>
+    </RichTextEdit>
+
+
+
+<style>
+    .rte-editor.ql-container.ql-snow
+    {
+        border: none;
+    }
+   .rte-editor.ql-container.ql-snow > div.ql-editor{
+       background: white;
+   }
+    .rte-toolbar.ql-toolbar.ql-snow
+    {
+         top: 0;
+        position: sticky;
+        width: 100%;
+        background: white;
+        z-index: 1000;
+    }
+   
+    .rte-editor.ql-container.ql-snow > div.ql-editor{
+        padding-top: 75px
+    }
+</style>
+@code{
+    [Parameter] public Chapter Chapter { get; set; }
+    protected RichTextEdit richTextEditRef;
+    protected bool readOnly;
+    protected string contentAsHtml;
+    protected string contentAsDeltaJson;
+    protected string contentAsText;
+    protected string savedContent;
+
+
+    protected override async Task OnParametersSetAsync()
+    {
+        string text = await editorService.GetChapterContent(Chapter.Id);
+        if (richTextEditRef!= null && text != null)
+        {
+            await richTextEditRef.SetHtmlAsync(text);
+        }
+    }
+    public async Task OnContentChanged()
+    {
+        contentAsText = await richTextEditRef.GetHtmlAsync();
+        await editorService.UpdateChapterContent(Chapter.Id, contentAsText);
+
+    }
+
+    public async Task DisableEditor()
+    {
+        readOnly = true;
+    }
+    public async Task EnableEditor()
+    {
+        readOnly = false;
+    }
+
+    public class CustomPage
+    {
+        public string Text { get; set; } 
+        public int Number { get; set; }
+        public RichTextEdit Ref { get; set; }
+    }
+}
